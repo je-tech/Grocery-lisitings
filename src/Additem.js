@@ -18,31 +18,24 @@ const Additem=()=>{
 		 const New_Item = {
 
 			itemName: User_input,
-
 			Item_quantity: 1,
-
 			isSelected: false,
 		};
 
 	  const User_ListItems = [...ADD_Items, New_Item];
 
 		Set_NewItem(User_ListItems);
-
 		GroceryAmount_func();
-
 		Set_UserInput('');
 
 		
 	};
 
 	  const ADDItems_func = (index) => {
-
 		  const User_ADDSItems = [...ADD_Items];
 
 		  User_ADDSItems[index].Item_quantity++;
-
 		  GroceryAmount_func();
-
 		  Set_NewItem(User_ADDSItems);
 
 		
@@ -70,9 +63,7 @@ const Additem=()=>{
 	  const GroceryAmount_func = () => {
 
 		   const totalItemCount = ADD_Items.reduce((total, item) => {
-
 			return total + item.Item_quantity;}, 0);
-
 		   Grocery_Amount(totalItemCount);
 	};
     
@@ -81,23 +72,16 @@ const Additem=()=>{
   
     <div className='main-container'>
 
-      
-  
     <div className='add-item-box'>
-  
     <input value={User_input} onChange={(event) => Set_UserInput(event.target.value)} className='add-item-input' placeholder='Add Missing Items' />
     <FontAwesomeIcon icon={faPlus} onClick={() => NewItems_func()} />
     </div>
   
     <div className='item-list'>
-  
     {ADD_Items.map((item, index) => (
-  
     <div className='item-container'>
-  
     <div className='item-name' onClick={() =>Selected_Items (index)}>
-  
-  
+
     {item.isSelected ? (
     <>
     <FontAwesomeIcon icon={faCheckCircle} />
@@ -112,26 +96,16 @@ const Additem=()=>{
     )}
   
     </div>
-  
     <div className='Item_quantity'>
-  
     <button><FontAwesomeIcon icon={faChevronLeft} onClick={() => RemoveItems_func (index)} /></button>
-  
     <span> {item.Item_quantity} </span>
-  
     <button><FontAwesomeIcon icon={faChevronRight} onClick={() => ADDItems_func(index)} /></button>
-  
     </div>
-  
     </div>
-  
     ))}
     </div>
-  
     <div className='total'>Item Total: {GroceryItem_tally}</div>
-    
     </div>
-  
     </div>
     );
     
